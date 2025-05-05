@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Viaoda_Libre } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+export const getVioda = Viaoda_Libre({
+  variable: "--font-vioda",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  style: ["normal"],
+  fallback: ["sans-serif"],
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
@@ -25,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${getVioda.className} antialiased`}
       >
         {children}
       </body>
