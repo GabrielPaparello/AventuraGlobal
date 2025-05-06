@@ -12,6 +12,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* En tu archivo global CSS (por ejemplo, styles.css) */
+.text-stroke {
+  -webkit-text-stroke: 5px white; /* Borde de 2px de color negro */
+  text-stroke: 10px white; /* Para otros navegadores */
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
