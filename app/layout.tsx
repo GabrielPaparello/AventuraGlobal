@@ -6,7 +6,7 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-export const getFunnel = Funnel_Display({
+const getFunnel = Funnel_Display({
   variable: "--font-funnel",
   subsets: ["latin"],
   display: "swap",
