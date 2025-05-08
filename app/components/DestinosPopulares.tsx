@@ -41,7 +41,7 @@ export const DestinosPopulares = () => {
   ];
 
   return (
-    <div className="bg-gray-100  px-4 md:px-20 lg:px-40 mt-10">
+    <div className="bg-gray-100  px-4 md:px-20 lg:px-40 mt-40">
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative overflow-visible">
         {destinos.map((destino) => (
           <div
