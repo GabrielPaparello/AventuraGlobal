@@ -5,10 +5,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'randomuser.me',
-        pathname: '/api/portraits/**',
+        pathname: '/api/portraits/men/*',
+      },
+      {
+        protocol: 'https',
+        hostname: 'randomuser.me',
+        pathname: '/api/portraits/women/*',
       },
     ],
   },
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig;

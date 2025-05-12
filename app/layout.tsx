@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Roboto, Playwrite_DK_Loopet } from "next/font/google";
 import "./globals.css";
 
-const playwrite = Playwrite_DK_Loopet({
-  weight: '400',
-  style: 'normal',
-  display: 'swap',
-})
-
-const roboto = Roboto({
+export const roboto = Roboto({
   weight: '400',
   style: 'normal',
   display: 'swap',
   subsets: ['latin'],
-})
+});
+
+export const playwrite = Playwrite_DK_Loopet({
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} ${playwrite.className}`}>
+      <body className={``}>
         {children}
       </body>
     </html>
