@@ -16,6 +16,7 @@ export const Hero = () => {
     transform: "scale(1.2)",
   });
   const [isAnimating, setIsAnimating] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Configuración del scroll
   const { scrollYProgress } = useScroll();
@@ -33,14 +34,14 @@ export const Hero = () => {
   
   // Mobile-specific testimonial animations
   const testimonialsOpacity = useTransform(smoothProgress, 
-    window.innerWidth < 768 
+    isMobile 
       ? [0.02, 0.08]  // Earlier trigger for mobile
       : [0.05, 0.15], // Original timing for desktop
     [0, 1]
   );
   
   const testimonialsY = useTransform(smoothProgress,
-    window.innerWidth < 768
+    isMobile
       ? [0.02, 0.08]  // Earlier trigger for mobile
       : [0.05, 0.15], // Original timing for desktop
     [150, 0]  // Increased Y offset for mobile
@@ -48,7 +49,10 @@ export const Hero = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+      
+      if (isMobileView) {
         setBgStyle({
           objectFit: "cover",
           top: "-150px",
@@ -69,8 +73,13 @@ export const Hero = () => {
       }
     };
 
+    // Initial check
     handleResize();
+    
+    // Add event listener
     window.addEventListener("resize", handleResize);
+    
+    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
