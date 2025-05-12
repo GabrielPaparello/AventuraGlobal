@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import { playwrite } from "./Hero";
+import { playwrite } from './fonts';
 
 export const Experiencias = () => {
   const experiencias = [
@@ -60,7 +60,7 @@ export const Experiencias = () => {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-blue-100 pt-5">
       <h1 className={`text-4xl ${playwrite.className} text-center mt-16 mb-12`}>Experiencias</h1>
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 md:p-8"
@@ -75,7 +75,7 @@ export const Experiencias = () => {
             variants={itemVariants}
             className="bg-white shadow-lg rounded-lg overflow-hidden group"
           >
-            <div className="relative h-64 overflow-hidden">
+            <div className="relative h-80 overflow-hidden">
               <Image
                 src={experiencia.imagen}
                 alt={experiencia.nombre}
@@ -84,7 +84,7 @@ export const Experiencias = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 flex items-end p-6">
+              <div className="absolute inset-0 flex items-center p-6">
                 <div className={`transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500`}>
                   <h3 className={`${playwrite.className} text-2xl font-playwrite text-white mb-2`}>
                     {experiencia.nombre}

@@ -3,6 +3,7 @@
 import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import { Playwrite_DK_Loopet } from "next/font/google";
+import { roboto } from "./fonts";
 
 const playwrite = Playwrite_DK_Loopet({
   weight: '400',
@@ -91,11 +92,11 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
                 </div>
                 <div>
                   <h3 className={`text-white font-bold text-base md:text-xl drop-shadow-md ${playwrite.className}`}>{testimonial.name}</h3>
-                  <p className={`text-white/95 text-xs md:text-base font-roboto`}>{testimonial.location}</p>
+                  <p className={`text-white/95 text-xs md:text-base ${roboto.className}`}>{testimonial.location}</p>
                 </div>
               </div>
               <StarRating rating={testimonial.rating} />
-              <p className={`text-white mt-3 md:mt-6 text-sm md:text-lg leading-relaxed font-roboto`}>{testimonial.text}</p>
+              <p className={`text-white mt-3 md:mt-6 text-sm md:text-lg leading-relaxed ${roboto.className}`}>{testimonial.text}</p>
             </motion.div>
           ))}
         </div>

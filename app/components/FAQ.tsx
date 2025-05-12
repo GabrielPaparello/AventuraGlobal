@@ -1,5 +1,6 @@
 import React from "react";
 import { Playwrite_DK_Loopet } from "next/font/google";
+import { roboto } from "./fonts";
 
 const playwrite = Playwrite_DK_Loopet({
   weight: '400',
@@ -18,7 +19,7 @@ export const FAQ = () => {
           <h2 className={`text-xl ${playwrite.className} mb-2`}>
             ¿Cómo puedo reservar un viaje?
           </h2>
-          <p className={`text-gray-700 font-roboto`}>
+          <p className={`text-gray-700 ${roboto.className}`}>
             Puedes reservar un viaje a través de nuestro sitio web o
             contactándonos directamente.
           </p>
@@ -27,7 +28,7 @@ export const FAQ = () => {
           <h2 className={`text-xl ${playwrite.className} mb-2`}>
             ¿Qué métodos de pago aceptan?
           </h2>
-          <p className={`text-gray-700 font-roboto`}>
+          <p className={`text-gray-700 ${roboto.className}`}>
             Aceptamos tarjetas de crédito, débito y transferencias bancarias.
           </p>
         </div>
@@ -37,7 +38,7 @@ export const FAQ = () => {
         <h2 className={`text-3xl ${playwrite.className} text-center mb-4`}>
           ¿Tienes más preguntas?
         </h2>
-        <p className={`text-lg text-center mb-6 font-roboto`}>
+        <p className={`text-lg text-center mb-6 ${roboto.className}`}>
           Si tienes más preguntas, no dudes en contactarnos. ¡Estamos aquí para
           ayudarte!
         </p>

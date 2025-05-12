@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { playwrite } from "./Hero";
+import { playwrite, roboto } from "./fonts";
 
 
 export const DestinosPopulares = () => {
@@ -93,7 +93,7 @@ export const DestinosPopulares = () => {
                 className="rounded-lg w-full h-48 object-cover"
               />
               <h3 className={`${playwrite.className} text-2xl font-playwrite text-gray-900 mt-6 mb-3`}>{destino.nombre}</h3>
-              <p className="text-gray-700 text-base md:line-clamp-2">
+              <p className={` ${roboto.className}text-gray-700 text-base md:line-clamp-2 `}>
                 {destino.description}
               </p>
               <button 

@@ -4,13 +4,7 @@ import { Parallax } from "react-parallax";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Testimonials } from "./Testimonials";
-import { Playwrite_DK_Loopet } from "next/font/google";
-import { roboto } from "./fonts";
-export const playwrite = Playwrite_DK_Loopet({
-  weight: '400',
-  style: 'normal',
-  display: 'swap',
-})
+import { playwrite, roboto } from "./fonts";
 
 export const Hero = () => {
   const [bgStyle, setBgStyle] = useState({
@@ -150,7 +144,7 @@ export const Hero = () => {
         <h2 className={`text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}>
           Destinos Populares
         </h2>
-        <p className={`text-gray-700 text-lg text-center font-roboto`}>
+        <p className={`text-gray-700 text-lg text-center ${roboto.className}`}>
           Explora los destinos más visitados por nuestros viajeros.
         </p>
       </motion.div>
