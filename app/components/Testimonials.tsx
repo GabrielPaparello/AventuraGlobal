@@ -4,28 +4,35 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 // Datos de ejemplo para los testimonios
-const testimonials = [
+interface Testimonial {
+  name: string;
+  image: string;
+  rating: number;
+  text: string;
+  location: string;
+}
+const testimonials: Testimonial[] = [
   {
     name: "María González",
     image: "https://randomuser.me/api/portraits/women/1.jpg",
     rating: 5,
     text: "¡Una experiencia increíble! El servicio fue excepcional y los destinos son impresionantes.",
-    location: "Madrid, España"
+    location: "Madrid, España",
   },
   {
     name: "Carlos Rodríguez",
     image: "https://randomuser.me/api/portraits/men/2.jpg",
     rating: 5,
     text: "La mejor agencia de viajes que he conocido. Todo perfectamente organizado.",
-    location: "Barcelona, España"
+    location: "Barcelona, España",
   },
   {
     name: "Ana Martínez",
     image: "https://randomuser.me/api/portraits/women/3.jpg",
     rating: 4,
     text: "Destinos únicos y experiencias inolvidables. ¡Volveré a viajar con ellos!",
-    location: "Valencia, España"
-  }
+    location: "Valencia, España",
+  },
 ];
 
 // Componente para las estrellas de calificación
@@ -35,7 +42,9 @@ const StarRating = ({ rating }: { rating: number }) => {
       {[...Array(5)].map((_, index) => (
         <svg
           key={index}
-          className={`w-5 h-5 ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+          className={`w-5 h-5 ${
+            index < rating ? "text-yellow-400" : "text-gray-300"
+          }`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -47,10 +56,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 };
 
 interface TestimonialsProps {
-  style?: {
-    y: any;
-    opacity: any;
-  };
+  style?: React.CSSProperties;
 }
 
 export const Testimonials = ({ style }: TestimonialsProps) => {
@@ -83,16 +89,22 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg">{testimonial.name}</h3>
-                  <p className="text-white/80 text-sm">{testimonial.location}</p>
+                  <h3 className="text-white font-semibold text-lg">
+                    {testimonial.name}
+                  </h3>
+                  <p className="text-white/80 text-sm">
+                    {testimonial.location}
+                  </p>
                 </div>
               </div>
               <StarRating rating={testimonial.rating} />
-              <p className="text-white mt-4 text-sm md:text-base">{testimonial.text}</p>
+              <p className="text-white mt-4 text-sm md:text-base">
+                {testimonial.text}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
     </motion.div>
   );
-}; 
+};

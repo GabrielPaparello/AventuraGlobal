@@ -29,8 +29,8 @@ export const Hero = () => {
   const titleOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
   const buttonsY = useTransform(smoothProgress, [0, 0.5], [0, -50]);
   const buttonsOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
-  const testimonialsOpacity = useTransform(smoothProgress, [0.3, 0.4], [0, 1]);
-  const testimonialsY = useTransform(smoothProgress, [0.3, 0.4], [50, 0]);
+  const testimonialsOpacity = useTransform(smoothProgress, [0.1, 0.2], [0, 1]); // Cambiado de [0.3, 0.4] a [0.1, 0.2]
+  const testimonialsY = useTransform(smoothProgress, [0.1, 0.2], [50, 0]); // Cambiado de [0.3, 0.4] a [0.1, 0.2]
 
   useEffect(() => {
     const handleResize = () => {
