@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 
 // Datos de ejemplo para los testimonios
@@ -56,7 +56,10 @@ const StarRating = ({ rating }: { rating: number }) => {
 };
 
 interface TestimonialsProps {
-  style?: React.CSSProperties;
+  style?: {
+    y: MotionValue<number>;
+    opacity: MotionValue<number>;
+  };
 }
 
 export const Testimonials = ({ style }: TestimonialsProps) => {
