@@ -4,6 +4,13 @@ import { Parallax } from "react-parallax";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Testimonials } from "./Testimonials";
+import { Playwrite_DK_Loopet, Roboto } from "next/font/google";
+
+export const playwrite = Playwrite_DK_Loopet({
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
+})
 
 export const Hero = () => {
   const [bgStyle, setBgStyle] = useState({
@@ -99,7 +106,7 @@ export const Hero = () => {
         >
           <motion.h1
             style={{ y: titleY, opacity: titleOpacity }}
-            className="text-white text-6xl md:text-[100px] text-center font-getfunnel drop-shadow-lg tracking-widest text-stroke"
+            className={`text-white text-6xl md:text-[100px] text-center ${playwrite.className} drop-shadow-lg tracking-widest text-stroke`}
           >
             Descubre el viaje de tus sueños
           </motion.h1>
@@ -111,7 +118,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl"
+              className={`bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
             >
               Ver destinos
             </motion.button>
@@ -119,7 +126,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl"
+              className={`bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
             >
               Reservar ahora
             </motion.button>
@@ -140,10 +147,10 @@ export const Hero = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white max-w-fit py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100"
       >
-        <h2 className="text-4xl font-playwrite text-gray-900 text-center mb-4">
+        <h2 className={`text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}>
           Destinos Populares
         </h2>
-        <p className="text-gray-700 font-roboto text-lg text-center">
+        <p className={`text-gray-700 text-lg text-center font-roboto`}>
           Explora los destinos más visitados por nuestros viajeros.
         </p>
       </motion.div>

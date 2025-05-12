@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { playwrite } from "./Hero";
 
 export const Experiencias = () => {
   const experiencias = [
@@ -60,7 +61,7 @@ export const Experiencias = () => {
 
   return (
     <div className="bg-gray-100">
-      <h1 className="text-4xl font-playwrite text-center mt-16 mb-12">Experiencias</h1>
+      <h1 className={`text-4xl ${playwrite.className} text-center mt-16 mb-12`}>Experiencias</h1>
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 md:p-8"
         variants={containerVariants}
@@ -84,11 +85,11 @@ export const Experiencias = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute inset-0 flex items-end p-6">
-                <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-2xl font-playwrite text-white mb-2">
+                <div className={`transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500`}>
+                  <h3 className={`${playwrite.className} text-2xl font-playwrite text-white mb-2`}>
                     {experiencia.nombre}
                   </h3>
-                  <p className="text-white/90 font-roboto text-base">
+                  <p className="text-white/90 text-base">
                     {experiencia.description}
                   </p>
                 </div>

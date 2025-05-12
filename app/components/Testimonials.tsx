@@ -2,6 +2,13 @@
 
 import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
+import { Playwrite_DK_Loopet } from "next/font/google";
+
+const playwrite = Playwrite_DK_Loopet({
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
+})
 
 // Datos de ejemplo para los testimonios
 const testimonials = [
@@ -57,13 +64,13 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
   return (
     <motion.div
       style={style}
-      className="absolute top-[800px] md:top-[1000px] w-full z-30 px-4 md:px-8"
+      className="absolute top-[600px] md:top-[1000px] w-full z-30 px-4 md:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-white text-3xl md:text-4xl font-playwrite text-center mb-8 md:mb-12 tracking-wider drop-shadow-lg">
+        <h2 className={`text-white text-3xl md:text-4xl ${playwrite.className} text-center mb-8 md:mb-12 tracking-wider drop-shadow-lg`}>
           Lo que dicen nuestros viajeros
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -71,10 +78,10 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white/20 backdrop-blur-lg rounded-2xl p-6 md:p-8 shadow-xl border border-white/30 hover:bg-white/30 transition-all duration-300"
+              className="bg-white/20 backdrop-blur-lg rounded-2xl p-4 md:p-8 shadow-xl border border-white/30 hover:bg-white/30 transition-all duration-300"
             >
-              <div className="flex items-center gap-4 md:gap-6 mb-4 md:mb-6">
-                <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/40">
+              <div className="flex items-center gap-3 md:gap-6 mb-3 md:mb-6">
+                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/40">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -83,12 +90,12 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-white font-roboto font-bold text-lg md:text-xl drop-shadow-md">{testimonial.name}</h3>
-                  <p className="text-white/95 text-sm md:text-base font-roboto">{testimonial.location}</p>
+                  <h3 className={`text-white font-bold text-base md:text-xl drop-shadow-md ${playwrite.className}`}>{testimonial.name}</h3>
+                  <p className={`text-white/95 text-xs md:text-base font-roboto`}>{testimonial.location}</p>
                 </div>
               </div>
               <StarRating rating={testimonial.rating} />
-              <p className="text-white mt-4 md:mt-6 text-base md:text-lg font-roboto leading-relaxed">{testimonial.text}</p>
+              <p className={`text-white mt-3 md:mt-6 text-sm md:text-lg leading-relaxed font-roboto`}>{testimonial.text}</p>
             </motion.div>
           ))}
         </div>

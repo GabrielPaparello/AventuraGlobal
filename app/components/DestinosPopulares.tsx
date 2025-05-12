@@ -2,6 +2,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { playwrite } from "./Hero";
+
 
 export const DestinosPopulares = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -90,22 +92,19 @@ export const DestinosPopulares = () => {
                 height={150}
                 className="rounded-lg w-full h-48 object-cover"
               />
-              <h3 className="text-2xl font-playwrite text-gray-900 mt-6 mb-3">{destino.nombre}</h3>
-              <p className="text-gray-700 font-roboto text-base md:line-clamp-2">
+              <h3 className={`${playwrite.className} text-2xl font-playwrite text-gray-900 mt-6 mb-3`}>{destino.nombre}</h3>
+              <p className="text-gray-700 text-base md:line-clamp-2">
                 {destino.description}
               </p>
               <button 
-                className="text-blue-600 font-roboto font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 hidden md:block"
+                className="text-blue-600 font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 hidden md:block"
                 onClick={() => setExpandedCard(destino.id)}
               >
                 Ver más
               </button>
-              <button 
-                className="text-blue-600 font-roboto font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 md:hidden"
-                onClick={() => setExpandedCard(destino.id)}
-              >
-                Ver detalles
-              </button>
+              <p className="text-blue-600 font-semibold mt-4 md:hidden">
+                {destino.description}
+              </p>
             </div>
 
             {/* Expansión al centro solo en pantallas grandes */}
@@ -115,7 +114,7 @@ export const DestinosPopulares = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-xl bg-white p-8 rounded-lg shadow-2xl z-50"
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-xl bg-white p-8 rounded-lg shadow-2xl z-50 hidden md:block"
               >
                 <button 
                   onClick={(e) => {
@@ -138,7 +137,7 @@ export const DestinosPopulares = () => {
                 <h3 className="text-3xl font-playwrite text-gray-900 mt-6 mb-4 text-center">
                   {destino.nombre}
                 </h3>
-                <p className="text-gray-700 font-roboto text-lg text-center">
+                <p className="text-gray-700 text-lg text-center">
                   {destino.description}
                 </p>
               </motion.div>
