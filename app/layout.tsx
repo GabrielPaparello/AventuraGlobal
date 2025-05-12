@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Roboto, Playwrite_DK_Loopet } from "next/font/google";
 import "./globals.css";
 
-export const roboto = Roboto({
+ const roboto = Roboto({
   weight: '400',
   style: 'normal',
   display: 'swap',
   subsets: ['latin'],
 });
 
-export const playwrite = Playwrite_DK_Loopet({
+ const playwrite = Playwrite_DK_Loopet({
   weight: '400',
   style: 'normal',
   display: 'swap',
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <body className={``}>
         {children}
       </body>

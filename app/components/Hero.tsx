@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Testimonials } from "./Testimonials";
 import { Playwrite_DK_Loopet } from "next/font/google";
-
+import { roboto } from "./fonts";
 export const playwrite = Playwrite_DK_Loopet({
   weight: '400',
   style: 'normal',
