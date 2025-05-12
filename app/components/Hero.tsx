@@ -30,8 +30,21 @@ export const Hero = () => {
   const titleOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
   const buttonsY = useTransform(smoothProgress, [0, 0.5], [0, -50]);
   const buttonsOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
-  const testimonialsOpacity = useTransform(smoothProgress, [0.1, 0.2], [0, 1]); // Cambiado de [0.3, 0.4] a [0.1, 0.2]
-  const testimonialsY = useTransform(smoothProgress, [0.1, 0.2], [50, 0]); // Cambiado de [0.3, 0.4] a [0.1, 0.2]
+  
+  // Mobile-specific testimonial animations
+  const testimonialsOpacity = useTransform(smoothProgress, 
+    window.innerWidth < 768 
+      ? [0.02, 0.08]  // Earlier trigger for mobile
+      : [0.05, 0.15], // Original timing for desktop
+    [0, 1]
+  );
+  
+  const testimonialsY = useTransform(smoothProgress,
+    window.innerWidth < 768
+      ? [0.02, 0.08]  // Earlier trigger for mobile
+      : [0.05, 0.15], // Original timing for desktop
+    [150, 0]  // Increased Y offset for mobile
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,7 +92,7 @@ export const Hero = () => {
         bgImage="/montaña.jpg"
         strength={500}
         bgImageAlt="Montañas"
-        className="relative h-[1200px] md:h-[1500px] z-10"
+        className="relative h-[2000px] md:h-[1500px] z-10"
         bgImageStyle={{
           ...bgStyle,
           transition: "all 0.2s ease-out",
@@ -100,19 +113,19 @@ export const Hero = () => {
         >
           <motion.h1
             style={{ y: titleY, opacity: titleOpacity }}
-            className={`text-white text-6xl md:text-[100px] text-center ${playwrite.className} drop-shadow-lg tracking-widest text-stroke`}
+            className={`text-white text-4xl sm:text-6xl md:text-[100px] text-center ${playwrite.className} drop-shadow-lg tracking-widest [text-shadow:_2px_2px_0_rgb(0_0_0_/_40%)] md:text-stroke`}
           >
             Descubre el viaje de tus sueños
           </motion.h1>
           <motion.div
             style={{ y: buttonsY, opacity: buttonsOpacity }}
-            className="flex gap-6 justify-center w-full max-w-md px-5 mt-[100px]"
+            className="flex gap-4 sm:gap-6 justify-center w-full max-w-md px-5 mt-[100px]"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className={`bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
+              className={`bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-base rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
             >
               Ver destinos
             </motion.button>
@@ -120,7 +133,7 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className={`bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
+              className={`bg-white hover:bg-gray-100 text-blue-600 px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-base rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:shadow-xl ${playwrite.className}`}
             >
               Reservar ahora
             </motion.button>
@@ -141,10 +154,10 @@ export const Hero = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white max-w-fit py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100"
       >
-        <h2 className={`text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}>
+        <h2 className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}>
           Destinos Populares
         </h2>
-        <p className={`text-gray-700 text-lg text-center ${roboto.className}`}>
+        <p className={`text-base sm:text-lg text-gray-700 text-center ${roboto.className}`}>
           Explora los destinos más visitados por nuestros viajeros.
         </p>
       </motion.div>
