@@ -102,9 +102,9 @@ export const DestinosPopulares = () => {
               >
                 Ver más
               </button>
-              <p className="text-blue-600 font-semibold mt-4 md:hidden">
+              {/* <p className="text-blue-600 font-semibold mt-4 md:hidden">
                 {destino.description}
-              </p>
+              </p> */}
             </div>
 
             {/* Expansión al centro solo en pantallas grandes */}
