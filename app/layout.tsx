@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
-import { Funnel_Display, Geist, Geist_Mono } from "next/font/google";
+import { Roboto, Playwrite_DK_Loopet} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const getFunnel = Funnel_Display({
-  variable: "--font-funnel",
-  subsets: ["latin"],
+
+const playwright = Playwrite_DK_Loopet ({
+  variable: "--playwright",
   display: "swap",
   weight: ["400"],
   style: ["normal"],
   fallback: ["sans-serif"],
-  preload: true,
-});
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const roboto = Roboto ({
+  variable: "--roboto",
+  display: "swap",
+  weight: ["400"],
+  style: ["normal"],
+  fallback: ["sans-serif"],
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${getFunnel.className} antialiased`}
+        className={` ${roboto.variable} ${playwright.className} antialiased`}
       >
         {children}
       </body>

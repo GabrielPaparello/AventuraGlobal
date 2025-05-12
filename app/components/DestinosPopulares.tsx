@@ -1,7 +1,11 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export const DestinosPopulares = () => {
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
   const destinos = [
     {
       id: 1,
@@ -40,53 +44,108 @@ export const DestinosPopulares = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="bg-gray-100  px-4 md:px-20 lg:px-40 mt-40">
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative overflow-visible">
+    <div className="bg-gray-100 px-4 md:px-20 lg:px-40 mt-40">
+      <motion.div 
+        className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative overflow-visible"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {destinos.map((destino) => (
-          <div
+          <motion.div
             key={destino.id}
+            variants={cardVariants}
             className="relative group transition-all duration-500 ease-in-out"
           >
             {/* Card inicial */}
-            <div className="bg-white shadow-md rounded-lg flex flex-col items-center justify-center p-4 z-10">
+            <div className="bg-white shadow-lg rounded-lg flex flex-col items-center justify-center p-6 hover:shadow-xl transition-all duration-300">
               <Image
                 src={destino.imagen}
                 alt={destino.nombre}
                 width={300}
                 height={150}
-                className="rounded-lg"
+                className="rounded-lg w-full h-48 object-cover"
               />
-              <h3 className="text-xl font-semibold mt-4">{destino.nombre}</h3>
-              <p className="text-gray-600 mt-2 md:line-clamp-2">
+              <h3 className="text-2xl font-playwrite text-gray-900 mt-6 mb-3">{destino.nombre}</h3>
+              <p className="text-gray-700 font-roboto text-base md:line-clamp-2">
                 {destino.description}
               </p>
-              <button className="text-blue-500 font-semibold mt-2 group-hover:underline">
+              <button 
+                className="text-blue-600 font-roboto font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 hidden md:block"
+                onClick={() => setExpandedCard(destino.id)}
+              >
                 Ver más
+              </button>
+              <button 
+                className="text-blue-600 font-roboto font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 md:hidden"
+                onClick={() => setExpandedCard(destino.id)}
+              >
+                Ver detalles
               </button>
             </div>
 
             {/* Expansión al centro solo en pantallas grandes */}
-            <div className="hidden md:block pointer-events-none absolute inset-0 z-20 scale-0 group-hover:scale-100 transition-all duration-500 ease-in-out">
-              <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-xl bg-white p-6 rounded-lg shadow-lg z-50 opacity-100">
+            {expandedCard === destino.id && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-xl bg-white p-8 rounded-lg shadow-2xl z-50"
+              >
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExpandedCard(null);
+                  }}
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
                 <Image
                   src={destino.imagen}
                   alt={destino.nombre}
                   width={600}
                   height={300}
-                  className="rounded-lg mx-auto"
+                  className="rounded-lg mx-auto w-full h-64 object-cover"
                 />
-                <h3 className="text-2xl font-bold mt-4 text-center">
+                <h3 className="text-3xl font-playwrite text-gray-900 mt-6 mb-4 text-center">
                   {destino.nombre}
                 </h3>
-                <p className="text-gray-700 mt-2 text-center">
+                <p className="text-gray-700 font-roboto text-lg text-center">
                   {destino.description}
                 </p>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            )}
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export const Experiencias = () => {
   const experiencias = [
@@ -32,43 +35,68 @@ export const Experiencias = () => {
         "Contamos con guías turísticos que te ayudarán a conocer cada lugar.",
     },
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center mt-10">Experiencias</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {/* Aquí puedes agregar tus experiencias */}
+    <div className="bg-gray-100">
+      <h1 className="text-4xl font-playwrite text-center mt-16 mb-12">Experiencias</h1>
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4 md:p-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {experiencias.map((experiencia) => (
-          <div
+          <motion.div
             key={experiencia.id}
-            className="bg-white shadow-md rounded-lg flex "
+            variants={itemVariants}
+            className="bg-white shadow-lg rounded-lg overflow-hidden group"
           >
-            <div className=" w-50 h-100 overflow-hidden">
+            <div className="relative h-64 overflow-hidden">
               <Image
                 src={experiencia.imagen}
                 alt={experiencia.nombre}
                 width={300}
                 height={150}
-                className=" w-50 h-100 object-cover transition-transform duration-500 ease-in-out transform hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-            </div>
-            <div className=" flex flex-col items-center justify-center relative ">
-              <Image
-                src={experiencia.imagen}
-                alt={experiencia.nombre}
-                width={300}
-                height={150}
-                className="rounded-lg grayscale-75  w-100 h-100 object-cover  "
-              />
-              <div className="bg-white/25 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-sm rounded-[10px] border border-white/20 absolute top-1/2 px-2 text-start mt-2">
-                <h3 className=" text-black  text-xl font-semibold mt-4">
-                  {experiencia.nombre}
-                </h3>
-                <p className="  text-start">{experiencia.description}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 flex items-end p-6">
+                <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-playwrite text-white mb-2">
+                    {experiencia.nombre}
+                  </h3>
+                  <p className="text-white/90 font-roboto text-base">
+                    {experiencia.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
