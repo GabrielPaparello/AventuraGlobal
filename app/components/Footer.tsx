@@ -10,7 +10,7 @@ const playwrite = Playwrite_DK_Loopet({
 export const Footer = () => {
   return (
     <div>
-      <footer className="bg-gray-800 text-white py-4">
+      <footer className="bg-gray-800 text-white py-4 mt-10">
         <div className="container mx-auto text-center">
           <p className={playwrite.className}>
             &copy; 2023 Tu Agencia de Viajes. Todos los derechos reservados.

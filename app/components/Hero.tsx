@@ -4,7 +4,7 @@ import { Parallax } from "react-parallax";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Testimonials } from "./Testimonials";
-import { Playwrite_DK_Loopet, Roboto } from "next/font/google";
+import { Playwrite_DK_Loopet } from "next/font/google";
 
 export const playwrite = Playwrite_DK_Loopet({
   weight: '400',

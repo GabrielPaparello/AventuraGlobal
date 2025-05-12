@@ -27,21 +27,21 @@ export const FAQ = () => {
           <h2 className={`text-xl ${playwrite.className} mb-2`}>
             ¿Qué métodos de pago aceptan?
           </h2>
-          <p className={`text-gray-700 ${playwrite.className}`}>
+          <p className={`text-gray-700 font-roboto`}>
             Aceptamos tarjetas de crédito, débito y transferencias bancarias.
           </p>
         </div>
         {/* Agrega más preguntas frecuentes aquí */}
       </div>
-      <div className="bg-gray-100 px-4 md:px-20 lg:px-40 mt-10">
+      <div className="bg-gray-100 px-4 md:px-20 lg:px-40 mt-10 flex flex-col ">
         <h2 className={`text-3xl ${playwrite.className} text-center mb-4`}>
           ¿Tienes más preguntas?
         </h2>
-        <p className={`text-lg text-center mb-6 ${playwrite.className}`}>
+        <p className={`text-lg text-center mb-6 font-roboto`}>
           Si tienes más preguntas, no dudes en contactarnos. ¡Estamos aquí para
           ayudarte!
         </p>
-        <button className={`bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 ${playwrite.className}`}>
+        <button className={`bg-blue-500 text-white self-center  px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 ${playwrite.className}`}>
           Contáctanos
         </button>
       </div>
