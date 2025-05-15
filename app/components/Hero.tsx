@@ -171,10 +171,10 @@ export const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }}
         viewport={{ once: true, margin: "-100px" }}
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white max-w-fit py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100"
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white sm:w-[90%] md:w-[50%] py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100 "
       >
         <h2
-          className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4 sm:w-[200px]`}
+          className={`text-3xl sm:text-4xl min-w-[200px] ${playwrite.className} text-gray-900 text-center mb-4 `}
         >
           Destinos Populares
         </h2>

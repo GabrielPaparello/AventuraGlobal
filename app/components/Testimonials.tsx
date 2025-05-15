@@ -6,34 +6,34 @@ import { Playwrite_DK_Loopet } from "next/font/google";
 import { roboto } from "./fonts";
 
 const playwrite = Playwrite_DK_Loopet({
-  weight: '400',
-  style: 'normal',
-  display: 'swap',
-})
-
+  weight: "400",
+  style: "normal",
+  display: "swap",
+});
+// src={`/api/proxy?url=https://randomuser.me/api/portraits/men/10.jpg`}
 // Datos de ejemplo para los testimonios
 const testimonials = [
   {
     name: "María González",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
+    image: "/api/proxy?url=https://randomuser.me/api/portraits/women/1.jpg",
     rating: 5,
     text: "¡Una experiencia increíble! El servicio fue excepcional y los destinos son impresionantes.",
-    location: "Madrid, España"
+    location: "Madrid, España",
   },
   {
     name: "Carlos Rodríguez",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
+    image: "/api/proxy?url=https://randomuser.me/api/portraits/men/2.jpg",
     rating: 5,
     text: "La mejor agencia de viajes que he conocido. Todo perfectamente organizado.",
-    location: "Barcelona, España"
+    location: "Barcelona, España",
   },
   {
     name: "Ana Martínez",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
+    image: "/api/proxy?url=https://randomuser.me/api/portraits/women/3.jpg",
     rating: 4,
     text: "Destinos únicos y experiencias inolvidables. ¡Volveré a viajar con ellos!",
-    location: "Valencia, España"
-  }
+    location: "Valencia, España",
+  },
 ];
 
 // Componente para las estrellas de calificación
@@ -43,7 +43,9 @@ const StarRating = ({ rating }: { rating: number }) => {
       {[...Array(5)].map((_, index) => (
         <svg
           key={index}
-          className={`w-4 h-4 md:w-5 md:h-5 ${index < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+          className={`w-4 h-4 md:w-5 md:h-5 ${
+            index < rating ? "text-yellow-400" : "text-gray-300"
+          }`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -65,10 +67,12 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
   return (
     <motion.div
       style={style}
-      className="absolute top-[600px] md:top-[1000px] w-full z-30 px-4 md:px-8"
+      className="absolute top-[800px] md:top-[1000px] w-full z-30 px-4 md:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className={`text-white text-3xl md:text-4xl ${playwrite.className} text-center mb-8 md:mb-12 tracking-wider drop-shadow-lg`}>
+        <h2
+          className={`text-white text-3xl md:text-4xl ${playwrite.className} text-center mb-8 md:mb-12 tracking-wider drop-shadow-lg`}
+        >
           Lo que dicen nuestros viajeros
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
@@ -91,12 +95,24 @@ export const Testimonials = ({ style }: TestimonialsProps) => {
                   />
                 </div>
                 <div>
-                  <h3 className={`text-white font-bold text-base md:text-xl drop-shadow-md ${playwrite.className}`}>{testimonial.name}</h3>
-                  <p className={`text-white/95 text-xs md:text-base ${roboto.className}`}>{testimonial.location}</p>
+                  <h3
+                    className={`text-white font-bold text-base md:text-xl drop-shadow-md ${playwrite.className}`}
+                  >
+                    {testimonial.name}
+                  </h3>
+                  <p
+                    className={`text-white/95 text-xs md:text-base ${roboto.className}`}
+                  >
+                    {testimonial.location}
+                  </p>
                 </div>
               </div>
               <StarRating rating={testimonial.rating} />
-              <p className={`text-white mt-3 md:mt-6 text-sm md:text-lg leading-relaxed ${roboto.className}`}>{testimonial.text}</p>
+              <p
+                className={`text-white mt-3 md:mt-6 text-sm md:text-lg leading-relaxed ${roboto.className}`}
+              >
+                {testimonial.text}
+              </p>
             </motion.div>
           ))}
         </div>
