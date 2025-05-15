@@ -120,7 +120,7 @@ export const Hero = () => {
             ease: [0.6, -0.05, 0.01, 0.99],
             onComplete: () => setIsAnimating(false),
           }}
-          className="flex flex-col items-center justify-center  h-screen z-20 relative mb-20"
+          className="flex flex-col items-center justify-center  h-screen z-20 relative mb-20 px-2"
         >
           <motion.h1
             style={{ y: titleY, opacity: titleOpacity }}
