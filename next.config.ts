@@ -1,19 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Define los dominios o patrones permitidos para cargar imágenes de manera remota
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "randomuser.me", // Dominio que usas para las imágenes
-        pathname: "/**", // Ruta para imágenes de hombres
+        hostname: "randomuser.me",
+        pathname: "/api/portraits/men/*",
       },
       {
         protocol: "https",
-        hostname: "randomuser.me", // Dominio que usas para las imágenes
-        pathname: "/**", // Ruta para imágenes de mujeres
+        hostname: "randomuser.me",
+        pathname: "/api/portraits/women/*",
       },
     ],
+    domains: ["randomuser.me"], // Agrega esta línea
   },
 };
 

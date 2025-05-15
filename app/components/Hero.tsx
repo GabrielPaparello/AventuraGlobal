@@ -120,7 +120,7 @@ export const Hero = () => {
             ease: [0.6, -0.05, 0.01, 0.99],
             onComplete: () => setIsAnimating(false),
           }}
-          className="flex flex-col items-center justify-center  h-screen z-20 relative"
+          className="flex flex-col items-center justify-center  h-screen z-20 relative mb-20"
         >
           <motion.h1
             style={{ y: titleY, opacity: titleOpacity }}
@@ -131,7 +131,7 @@ export const Hero = () => {
           <motion.div>
             <motion.h2
               style={{ y: titleY, opacity: titleOpacity }}
-              className={`text-white text-4xl  sm:text-xl  md:text-[26px] text-center ${roboto.className} mt-20 `}
+              className={`text-white text-4xl  sm:text-md  md:text-[26px] text-center ${roboto.className} mt-20 `}
             >
               ¡No somos una agencia de viajes, somos tus compañeros de aventura!
             </motion.h2>
@@ -174,7 +174,7 @@ export const Hero = () => {
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white max-w-fit py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100"
       >
         <h2
-          className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}
+          className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4 sm:w-[200px]`}
         >
           Destinos Populares
         </h2>

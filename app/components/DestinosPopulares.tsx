@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { playwrite, roboto } from "./fonts";
-
 
 export const DestinosPopulares = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -51,26 +50,26 @@ export const DestinosPopulares = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <div className="bg-gray-100 px-4 md:px-20 lg:px-40 mt-40">
-      <motion.div 
+      <motion.div
         className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative overflow-visible"
         variants={containerVariants}
         initial="hidden"
@@ -92,11 +91,17 @@ export const DestinosPopulares = () => {
                 height={150}
                 className="rounded-lg w-full h-48 object-cover"
               />
-              <h3 className={`${playwrite.className} text-2xl font-playwrite text-gray-900 mt-6 mb-3`}>{destino.nombre}</h3>
-              <p className={` ${roboto.className}text-gray-700 text-base md:line-clamp-2 `}>
+              <h3
+                className={`${playwrite.className} text-2xl font-playwrite text-gray-900 mt-6 mb-3`}
+              >
+                {destino.nombre}
+              </h3>
+              <p
+                className={` ${roboto.className} text-gray-700 text-base md:line-clamp-2 `}
+              >
                 {destino.description}
               </p>
-              <button 
+              <button
                 className="text-blue-600 font-semibold mt-4 group-hover:text-blue-700 transition-colors duration-300 hidden md:block"
                 onClick={() => setExpandedCard(destino.id)}
               >
@@ -109,22 +114,32 @@ export const DestinosPopulares = () => {
 
             {/* Expansión al centro solo en pantallas grandes */}
             {expandedCard === destino.id && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-xl bg-white p-8 rounded-lg shadow-2xl z-50 hidden md:block"
               >
-                <button 
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     setExpandedCard(null);
                   }}
                   className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors duration-300"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
                 <Image
