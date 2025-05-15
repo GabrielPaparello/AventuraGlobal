@@ -31,27 +31,29 @@ export const Hero = () => {
   const titleOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
   const buttonsY = useTransform(smoothProgress, [0, 0.5], [0, -50]);
   const buttonsOpacity = useTransform(smoothProgress, [0, 0.3], [1, 0]);
-  
+
   // Mobile-specific testimonial animations
-  const testimonialsOpacity = useTransform(smoothProgress, 
-    isMobile 
-      ? [0.02, 0.08]  // Earlier trigger for mobile
+  const testimonialsOpacity = useTransform(
+    smoothProgress,
+    isMobile
+      ? [0.02, 0.08] // Earlier trigger for mobile
       : [0.05, 0.15], // Original timing for desktop
     [0, 1]
   );
-  
-  const testimonialsY = useTransform(smoothProgress,
+
+  const testimonialsY = useTransform(
+    smoothProgress,
     isMobile
-      ? [0.02, 0.08]  // Earlier trigger for mobile
+      ? [0.02, 0.08] // Earlier trigger for mobile
       : [0.05, 0.15], // Original timing for desktop
-    [150, 0]  // Increased Y offset for mobile
+    [150, 0] // Increased Y offset for mobile
   );
 
   useEffect(() => {
     const handleResize = () => {
       const isMobileView = window.innerWidth < 768;
       setIsMobile(isMobileView);
-      
+
       if (isMobileView) {
         setBgStyle({
           objectFit: "cover",
@@ -75,10 +77,10 @@ export const Hero = () => {
 
     // Initial check
     handleResize();
-    
+
     // Add event listener
     window.addEventListener("resize", handleResize);
-    
+
     // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -118,17 +120,25 @@ export const Hero = () => {
             ease: [0.6, -0.05, 0.01, 0.99],
             onComplete: () => setIsAnimating(false),
           }}
-          className="flex flex-col items-center justify-center h-screen z-20 relative"
+          className="flex flex-col items-center justify-center  h-screen z-20 relative"
         >
           <motion.h1
             style={{ y: titleY, opacity: titleOpacity }}
-            className={`text-white text-4xl sm:text-6xl md:text-[100px] text-center ${playwrite.className} drop-shadow-lg tracking-widest [text-shadow:_2px_2px_0_rgb(0_0_0_/_40%)] md:text-stroke`}
+            className={`text-white text-4xl sm:text-4xl md:text-[56px] text-center ${playwrite.className} drop-shadow-lg tracking-widest [text-shadow:_2px_2px_0_rgb(0_0_0_/_40%)] md:text-stroke`}
           >
             Descubre el viaje de tus sueños
           </motion.h1>
+          <motion.div>
+            <motion.h2
+              style={{ y: titleY, opacity: titleOpacity }}
+              className={`text-white text-4xl  sm:text-xl  md:text-[26px] text-center ${roboto.className} mt-20 `}
+            >
+              ¡No somos una agencia de viajes, somos tus compañeros de aventura!
+            </motion.h2>
+          </motion.div>
           <motion.div
             style={{ y: buttonsY, opacity: buttonsOpacity }}
-            className="flex gap-4 sm:gap-6 justify-center w-full max-w-md px-5 mt-[100px]"
+            className="flex gap-4 sm:gap-6 justify-center w-full max-w-md px-5 mt-[50px]"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -163,10 +173,14 @@ export const Hero = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-white max-w-fit py-12 px-8 md:px-20 lg:px-40 z-30 rounded-3xl shadow-2xl border-2 border-gray-100"
       >
-        <h2 className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}>
+        <h2
+          className={`text-3xl sm:text-4xl ${playwrite.className} text-gray-900 text-center mb-4`}
+        >
           Destinos Populares
         </h2>
-        <p className={`text-base sm:text-lg text-gray-700 text-center ${roboto.className}`}>
+        <p
+          className={`text-base sm:text-lg text-gray-700 text-center ${roboto.className}`}
+        >
           Explora los destinos más visitados por nuestros viajeros.
         </p>
       </motion.div>
